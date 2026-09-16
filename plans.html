@@ -6,7 +6,7 @@
   <title>策划案 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* 本页背景图（可选，改文件名即可） */
+    /* 页面背景：如果你要背景图，把 academic-bg.jpg 换成你的图片名；不要背景就删掉 body 这两行 */
     body {
       background-image: url('academic-bg.jpg');
       background-size: cover;
@@ -18,7 +18,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.5); /* 白色半透明遮罩，数值0.5可调 */
       z-index: -1;
       pointer-events: none;
     }
@@ -35,15 +35,19 @@
       margin-bottom: 60px;
     }
 
-    /* 每个策划案块 */
-    .plan-block {
+    /* 每个策划案的容器 */
+    .plan-card {
       max-width: 900px;
       margin: 0 auto 60px;
-      padding: 0 25px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9); /* 白色半透明卡片底 */
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
 
-    .plan-block h2 {
+    .plan-card h2 {
       font-size: 1.3rem;
       color: #000 !important;
       font-weight: bold !important;
@@ -51,29 +55,35 @@
     }
 
     /* PDF 预览框 */
-    .plan-block iframe {
+    .pdf-viewer {
       width: 100%;
-      height: 500px;
+      height: 600px;
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      background: #fff;
-      display: block;
-      margin-bottom: 15px;
+      border-radius: 10px;
+      background: #fafafa;
+      margin-bottom: 20px;
     }
 
     /* 下载按钮 */
-    .plan-block .btn {
+    .download-btn {
       display: inline-block;
-      padding: 10px 24px;
+      padding: 12px 30px;
       background: #333;
       color: #fff !important;
       text-decoration: none !important;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: normal !important;
+      transition: background 0.2s;
     }
-    .plan-block .btn:hover {
+    .download-btn:hover {
       background: #000;
+    }
+
+    /* 手机端适配 */
+    @media (max-width: 768px) {
+      .pdf-viewer {
+        height: 400px; /* 手机上方框稍微矮一点 */
+      }
     }
   </style>
 </head>
@@ -81,6 +91,7 @@
 
   <div class="page-content">
 
+    <!-- 顶部导航 -->
     <header class="navbar">
       <div class="logo">林奕辰</div>
       <nav>
@@ -93,24 +104,25 @@
     <p class="page-subtitle">我的三个策划案作品</p>
 
     <!-- 策划案一 -->
-    <div class="plan-block">
+    <div class="plan-card">
       <h2>策划案一：项目名称</h2>
-      <iframe src="plan1.pdf"></iframe>
-      <a href="plan1.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
+      <!-- ⚠️ 把 src="plan1.pdf" 换成你实际上传的文件名 -->
+      <iframe class="pdf-viewer" src="plan1.pdf"></iframe>
+      <a href="plan1.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
     <!-- 策划案二 -->
-    <div class="plan-block">
+    <div class="plan-card">
       <h2>策划案二：项目名称</h2>
-      <iframe src="plan2.pdf"></iframe>
-      <a href="plan2.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
+      <iframe class="pdf-viewer" src="plan2.pdf"></iframe>
+      <a href="plan2.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
     <!-- 策划案三 -->
-    <div class="plan-block">
+    <div class="plan-card">
       <h2>策划案三：项目名称</h2>
-      <iframe src="plan3.pdf"></iframe>
-      <a href="plan3.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
+      <iframe class="pdf-viewer" src="plan3.pdf"></iframe>
+      <a href="plan3.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
   </div>
