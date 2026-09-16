@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== 背景轮播层 ===== */
+.bg-carousel {
+  position: fixed;          /* 固定在视口，滚动时不动 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;              /* 放到最底层 */
+  pointer-events: none;     /* 不拦截鼠标点击 */
+  overflow: hidden;
+}
+
+.bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;       /* 铺满整屏 */
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;                   /* 默认隐藏 */
+  transition: opacity 1.5s ease-in-out;  /* 淡入淡出过渡 */
+}
+
+.bg-slide.active {
+  opacity: 1;                   /* 当前显示的图 */
+}
+
+/* ===== 页面内容层（浮在背景上方） ===== */
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 导航栏 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.85);   /* 半透明白，能看清字 */
+  backdrop-filter: blur(6px);               /* 毛玻璃效果，好看 */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.navbar nav a:hover {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+/* 右侧个人照片 */
+.hero {
+  display: flex;
+  justify-content: flex-end;   /* 靠右 */
+  padding: 40px;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-photo {
+  width: 280px;
+  max-width: 60vw;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);  /* 加点阴影，从背景里跳出来 */
+}
+
+/* 基本信息 */
+.info {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.75);   /* 半透明白底，保证字清晰 */
+  backdrop-filter: blur(4px);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  border-radius: 12px;
+}
+
+.info h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.info a {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* 卡片区域 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);    /* 半透明白卡片 */
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* 页脚 */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+  font-size: 0.85rem;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(4px);
+  margin-top: 40px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .navbar nav a {
+    margin: 0 10px;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    justify-content: center;
+  }
+
+  .profile-photo {
+    width: 60vw;
+  }
+}
