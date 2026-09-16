@@ -6,22 +6,13 @@
   <title>平面设计 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===== 背景图（不需要就删掉 body 和 body::before） ===== */
-    body {
-      background-image: url('academic-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
+    /* ===== 纯白背景，覆盖全局 ===== */
+    html, body {
+      background: #ffffff !important;
+      background-image: none !important;
+      background-color: #ffffff !important;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.55);
-      z-index: -1;
-      pointer-events: none;
-    }
+    .bg-carousel { display: none !important; }
 
     .page-title {
       text-align: center;
@@ -32,7 +23,7 @@
     .page-subtitle {
       text-align: center;
       color: #888;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     /* ===== PDF 预览区 ===== */
@@ -41,10 +32,9 @@
       margin: 0 auto 70px;
       padding: 30px;
       background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       text-align: center;
     }
     .pdf-section h2 {
@@ -63,59 +53,44 @@
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     }
 
-    /* ===== 图片展示区 ===== */
-    .gallery-title {
-      text-align: center;
-      font-size: 1.3rem;
-      color: #000;
-      font-weight: bold;
-      margin: 0 auto 30px;
-      max-width: 1100px;
-    }
-    .design-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto 100px;
-      padding: 0 25px;
-    }
-    .design-item {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      transition: transform 0.3s;
+    /* ===== 3D 轮播容器 ===== */
+    .carousel-wrap {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      margin: 0 auto 60px;
       overflow: hidden;
     }
-    .design-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    /* ===== 统一尺寸：所有图片同样高度，按比例裁剪填满，不变形 ===== */
-    .design-item img {
+    .carousel {
+      position: relative;
       width: 100%;
-      height: 260px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 10px;
-      display: block;
-      transition: transform 0.3s;
+      height: 100%;
     }
-    .design-item:hover img {
-      transform: scale(1.04);
+    .carousel .photo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 320px;
+      height: 420px;
+      margin: -210px 0 0 -160px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      will-change: transform, opacity;
+      pointer-events: none;
     }
 
     /* ===== 手机适配 ===== */
     @media (max-width: 768px) {
       .pdf-viewer { height: 420px; }
       .pdf-section { padding: 20px; }
-      .design-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 25px; }
-      .design-item { padding: 12px; }
-      .design-item img { height: 220px; }
+      .carousel-wrap { height: 380px; }
+      .carousel .photo {
+        width: 220px;
+        height: 290px;
+        margin: -145px 0 0 -110px;
+      }
     }
   </style>
 </head>
@@ -141,25 +116,53 @@
       <a href="design.pdf" target="_blank" style="display:inline-block !important; padding:12px 30px !important; background:#333 !important; color:#fff !important; text-decoration:none !important; border-radius:8px !important; font-weight:normal !important; font-size:1rem !important;">📄 点击查看 / 下载 PDF</a>
     </div>
 
-    <!-- ===== 图片展示 ===== -->
-    <h2 class="gallery-title">作品展示</h2>
-    <div class="design-grid">
-
-      <!-- 前面 7 张竖图 -->
-      <div class="design-item"><img src="design1.JPG" alt="平面设计作品一"></div>
-      <div class="design-item"><img src="design2.JPG" alt="平面设计作品二"></div>
-      <div class="design-item"><img src="design3.JPG" alt="平面设计作品三"></div>
-      <div class="design-item"><img src="design4.JPG" alt="平面设计作品四"></div>
-      <div class="design-item"><img src="design6.JPG" alt="平面设计作品六"></div>
-      <div class="design-item"><img src="design7.JPG" alt="平面设计作品七"></div>
-      <div class="design-item"><img src="design8.JPG" alt="平面设计作品八"></div>
-
-      <!-- 横图放最后 -->
-      <div class="design-item"><img src="design5.JPG" alt="平面设计横图"></div>
-
+    <!-- ===== 3D 轮播：8 张图 ===== -->
+    <div class="carousel-wrap">
+      <div class="carousel" id="carousel">
+        <img class="photo" src="design1.JPG" alt="作品1">
+        <img class="photo" src="design2.JPG" alt="作品2">
+        <img class="photo" src="design3.JPG" alt="作品3">
+        <img class="photo" src="design4.JPG" alt="作品4">
+        <img class="photo" src="design5.JPG" alt="作品5">
+        <img class="photo" src="design6.JPG" alt="作品6">
+        <img class="photo" src="design7.JPG" alt="作品7">
+        <img class="photo" src="design8.JPG" alt="作品8">
+      </div>
     </div>
 
   </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const photos = carousel.querySelectorAll('.photo');
+    const total = photos.length;
+    let currentIndex = 0;
+
+    function update() {
+      photos.forEach((photo, i) => {
+        let diff = i - currentIndex;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const absDiff = Math.abs(diff);
+        const scale = Math.max(0.35, 1 - absDiff * 0.15);
+        const translateX = diff * 140;
+        const zIndex = 100 - absDiff;
+        const opacity = absDiff > 3 ? 0 : 1;
+
+        photo.style.transform = `translateX(${translateX}px) scale(${scale})`;
+        photo.style.zIndex = zIndex;
+        photo.style.opacity = opacity;
+      });
+    }
+
+    update();
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % total;
+      update();
+    }, 2500);
+  </script>
 
 </body>
 </html>
