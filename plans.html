@@ -6,7 +6,8 @@
   <title>策划案 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* 背景图（如果要换背景，就改 academic-bg.jpg 这个名字） */
+    /* ===== 背景图与遮罩 ===== */
+    /* 不想用背景图，就把 body 和 body::before 这两段删掉 */
     body {
       background-image: url('academic-bg.jpg');
       background-size: cover;
@@ -18,11 +19,12 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.55);
       z-index: -1;
       pointer-events: none;
     }
 
+    /* ===== 页面标题 ===== */
     .page-title {
       text-align: center;
       font-size: 2rem;
@@ -35,14 +37,16 @@
       margin-bottom: 60px;
     }
 
+    /* ===== 策划案卡片 ===== */
     .plan-card {
       max-width: 900px;
       margin: 0 auto 60px;
       padding: 30px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       text-align: center;
     }
 
@@ -53,6 +57,7 @@
       margin-bottom: 20px;
     }
 
+    /* ===== PDF 预览框 ===== */
     .pdf-viewer {
       width: 100%;
       height: 600px;
@@ -60,8 +65,10 @@
       border-radius: 10px;
       background: #fafafa;
       margin-bottom: 20px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     }
 
+    /* ===== 下载/查看按钮 ===== */
     .download-btn {
       display: inline-block;
       padding: 12px 30px;
@@ -74,11 +81,16 @@
     }
     .download-btn:hover {
       background: #000;
+      text-decoration: none !important;
     }
 
+    /* ===== 手机适配 ===== */
     @media (max-width: 768px) {
       .pdf-viewer {
-        height: 400px;
+        height: 420px;  /* 手机上矮一点，方便滑动 */
+      }
+      .plan-card {
+        padding: 20px;
       }
     }
   </style>
@@ -87,6 +99,7 @@
 
   <div class="page-content">
 
+    <!-- 顶部导航栏 -->
     <header class="navbar">
       <div class="logo">林奕辰</div>
       <nav>
@@ -95,28 +108,29 @@
       </nav>
     </header>
 
+    <!-- 标题区 -->
     <h1 class="page-title">策划案</h1>
     <p class="page-subtitle">我的三个策划案作品</p>
 
-    <!-- 策划案一 -->
+    <!-- ===== 策划案一 ===== -->
     <div class="plan-card">
       <h2>策划案一：永不失联的爱</h2>
-      <iframe class="pdf-viewer" src="已压缩）永不失联的爱-队不起队-林奕辰陈羿汝.pdf"></iframe>
-      <a href="已压缩）永不失联的爱-队不起队-林奕辰陈羿汝.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
+      <iframe class="pdf-viewer" src="plan1.pdf"></iframe>
+      <a href="plan1.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
-    <!-- 策划案二 -->
+    <!-- ===== 策划案二 ===== -->
     <div class="plan-card">
       <h2>策划案二：星星的孩子们</h2>
-      <iframe class="pdf-viewer" src="副本星星的孩子们.pdf"></iframe>
-      <a href="副本星星的孩子们.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
+      <iframe class="pdf-viewer" src="plan2.pdf"></iframe>
+      <a href="plan2.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
-    <!-- 策划案三 -->
+    <!-- ===== 策划案三 ===== -->
     <div class="plan-card">
       <h2>策划案三：15.8%的轻松，100%的清新</h2>
-      <iframe class="pdf-viewer" src="林奕辰《15.8%的的轻松，100%的清新》.pdf"></iframe>
-      <a href="林奕辰《15.8%的的轻松，100%的清新》.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
+      <iframe class="pdf-viewer" src="plan3.pdf"></iframe>
+      <a href="plan3.pdf" target="_blank" class="download-btn">📄 点击查看 / 下载 PDF</a>
     </div>
 
   </div>
