@@ -281,3 +281,114 @@ a.card p *,
   color: #666 !important;
   font-weight: normal !important;
 }
+/* ===== 工作经历页 ===== */
+.work-header {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.work-header h1 {
+  font-size: 2.2rem;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.work-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* 左右两栏布局 */
+.work-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 40px;
+}
+
+/* 左侧人物区 */
+.work-avatar {
+  flex: 0 0 280px;     /* 固定宽度 280px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;    /* 滚动时人物固定在屏幕 */
+  top: 120px;
+}
+
+.q-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12));  /* 人物悬浮阴影 */
+}
+
+.avatar-label {
+  margin-top: 15px;
+  background: #fff;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 右侧经历列表 */
+.work-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.work-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);  /* 一条细分割线，代替卡片框 */
+  padding-bottom: 35px;
+}
+
+.work-item:last-child {
+  border-bottom: none;  /* 最后一个不要分割线 */
+}
+
+.work-date {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.work-item h2 {
+  font-size: 1.25rem;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.work-item p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* 手机端适配：变成上下排版 */
+@media (max-width: 768px) {
+  .work-layout {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 20px;
+    align-items: center;
+  }
+  
+  .work-avatar {
+    position: static;
+    width: 200px;
+  }
+
+  .work-list {
+    width: 100%;
+  }
+}
