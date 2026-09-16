@@ -78,24 +78,17 @@ body {
   border-bottom: 2px solid #000;
 }
 
-/* 右侧个人照片 */
-.hero {
-  display: flex;
-  justify-content: flex-end;   /* 靠右 */
-  padding: 40px;
-}
-
-.hero-right {
-  display: flex;
-  justify-content: center;
-}
-
+/* 个人照片：居中，圆形 */
 .profile-photo {
-  width: 280px;
-  max-width: 60vw;
-  border-radius: 10px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;          /* 圆形，想要方图就改成 10px */
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);  /* 加点阴影，从背景里跳出来 */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  margin-bottom: 20px;         /* 和名字之间留点距离 */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 基本信息 */
