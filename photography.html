@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的摄影集 | 林奕辰</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== 背景图（不需要就删掉 body 和 body::before） ===== */
+    body {
+      background-image: url('academic-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.55);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #000;
+      margin: 60px 0 10px;
+    }
+    .page-subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    /* ===== 3D 轮播容器 ===== */
+    .carousel-wrap {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      margin: 0 auto 60px;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== 每张图片 ===== */
+    .carousel .photo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 320px;
+      height: 420px;
+      margin: -210px 0 0 -160px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+
+    /* ===== 手机适配 ===== */
+    @media (max-width: 768px) {
+      .carousel-wrap { height: 380px; }
+      .carousel .photo {
+        width: 220px;
+        height: 290px;
+        margin: -145px 0 0 -110px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-content">
+
+    <header class="navbar">
+      <div class="logo">林奕辰</div>
+      <nav>
+        <a href="index.html">← 返回首页</a>
+      </nav>
+    </header>
+
+    <h1 class="page-title">我的摄影集</h1>
+    <p class="page-subtitle">25 张照片 · 无限循环</p>
+
+    <!-- ===== 3D 轮播 ===== -->
+    <div class="carousel-wrap">
+      <div class="carousel" id="carousel">
+        <img class="photo" src="photo1.JPG" alt="照片1">
+        <img class="photo" src="photo2.JPG" alt="照片2">
+        <img class="photo" src="photo3.JPG" alt="照片3">
+        <img class="photo" src="photo4.JPG" alt="照片4">
+        <img class="photo" src="photo5.JPG" alt="照片5">
+        <img class="photo" src="photo6.JPG" alt="照片6">
+        <img class="photo" src="photo7.JPG" alt="照片7">
+        <img class="photo" src="photo8.JPG" alt="照片8">
+        <img class="photo" src="photo9.JPG" alt="照片9">
+        <img class="photo" src="photo10.JPG" alt="照片10">
+        <img class="photo" src="photo11.JPG" alt="照片11">
+        <img class="photo" src="photo12.JPG" alt="照片12">
+        <img class="photo" src="photo13.JPG" alt="照片13">
+        <img class="photo" src="photo14.JPG" alt="照片14">
+        <img class="photo" src="photo15.JPG" alt="照片15">
+        <img class="photo" src="photo16.JPG" alt="照片16">
+        <img class="photo" src="photo17.JPG" alt="照片17">
+        <img class="photo" src="photo18.JPG" alt="照片18">
+        <img class="photo" src="photo19.JPG" alt="照片19">
+        <img class="photo" src="photo20.JPG" alt="照片20">
+        <img class="photo" src="photo21.JPG" alt="照片21">
+        <img class="photo" src="photo22.JPG" alt="照片22">
+        <img class="photo" src="photo23.JPG" alt="照片23">
+        <img class="photo" src="photo24.JPG" alt="照片24">
+        <img class="photo" src="photo25.JPG" alt="照片25">
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const photos = carousel.querySelectorAll('.photo');
+    const total = photos.length;
+    let currentIndex = 0;
+
+    function update() {
+      photos.forEach((photo, i) => {
+        // 计算与当前中心的差值，并调整到 [-total/2, total/2) 范围，实现无限循环
+        let diff = i - currentIndex;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const absDiff = Math.abs(diff);
+
+        // 缩放：中心最大 1，每远离一张缩小 0.12
+        const scale = Math.max(0.35, 1 - absDiff * 0.12);
+
+        // 横向偏移：每张图间距 130px
+        const translateX = diff * 130;
+
+        // 层级：越靠中心越高
+        const zIndex = 100 - absDiff;
+
+        // 透明度：超过 5 张以外的隐藏
+        const opacity = absDiff > 5 ? 0 : 1;
+
+        photo.style.transform = `translateX(${translateX}px) scale(${scale})`;
+        photo.style.zIndex = zIndex;
+        photo.style.opacity = opacity;
+      });
+    }
+
+    // 初始化
+    update();
+
+    // 每 2.5 秒滚动一张
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % total;
+      update();
+    }, 2500);
+  </script>
+
+</body>
+</html>
