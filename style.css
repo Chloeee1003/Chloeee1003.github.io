@@ -139,10 +139,10 @@ a:hover {
 /* ===== 卡片区域 ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);   /* 固定两列 */
   gap: 25px;
   padding: 40px;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
