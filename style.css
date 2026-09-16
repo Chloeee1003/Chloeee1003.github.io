@@ -1,3 +1,4 @@
+/* ===== 全局重置 ===== */
 * {
   margin: 0;
   padding: 0;
@@ -47,19 +48,19 @@ body {
   z-index: 1;
 }
 
-/* ===== 链接统一：黑色加粗，无下划线 ===== */
+/* ===== 全局链接：黑色加粗，无下划线 ===== */
 a,
 a:link,
 a:visited,
 a:active {
-  color: #000;
+  color: #000 !important;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
-  color: #000;
-  text-decoration: underline;
+  color: #000 !important;
+  text-decoration: underline !important;
 }
 
 /* ===== 导航栏 ===== */
@@ -79,19 +80,23 @@ a:hover {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #000;
 }
 
-.navbar nav a {
+.navbar nav a,
+.navbar nav a:link,
+.navbar nav a:visited {
   margin-left: 25px;
   font-size: 0.95rem;
-  font-weight: normal;
-  color: #333;
+  font-weight: normal !important;
+  color: #333 !important;
+  text-decoration: none !important;
 }
 
 .navbar nav a:hover {
-  color: #000;
+  color: #000 !important;
   border-bottom: 2px solid #000;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* ===== 个人照片 ===== */
@@ -141,10 +146,12 @@ a:hover {
   margin: 0 auto;
 }
 
+/* 卡片整体（包括作为链接时的状态） */
 .card,
 a.card,
 a.card:link,
-a.card:visited {
+a.card:visited,
+a.card:active {
   display: block;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(4px);
@@ -154,39 +161,54 @@ a.card:visited {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  color: #333;
-  font-weight: normal;
-  text-decoration: none;
+  color: #333 !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
 }
 
 .card:hover,
 a.card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
+/* 卡片标题：黑色加粗 */
 .card h2,
-a.card h2 {
+a.card h2,
+.card h2 a,
+a.card h2 a,
+.card h2 a:link,
+.card h2 a:visited {
   font-size: 1.3rem;
   margin-bottom: 12px;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 8px;
-  font-weight: bold;
-  color: #000;
+  font-weight: bold !important;
+  color: #000 !important;
+  text-decoration: none !important;
 }
 
-.card p {
-  color: #666;
+.card h2 a:hover,
+a.card:hover h2 {
+  text-decoration: underline !important;
+}
+
+/* 卡片正文：灰色正常粗细 */
+.card p,
+a.card p,
+.card p a,
+a.card p a {
+  color: #666 !important;
   font-size: 0.95rem;
-  font-weight: normal;
+  font-weight: normal !important;
+  text-decoration: none !important;
 }
 
 /* ===== 按钮（简历下载） ===== */
 .btn,
 .btn:link,
 .btn:visited,
-.btn:hover,
 .btn:active {
   display: inline-block;
   padding: 10px 24px;
@@ -195,12 +217,14 @@ a.card h2 {
   text-decoration: none !important;
   border-radius: 6px;
   margin-top: 15px;
-  font-weight: normal;
+  font-weight: normal !important;
   transition: background 0.2s;
 }
 
 .btn:hover {
   background: #000;
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
 /* ===== 页脚 ===== */
