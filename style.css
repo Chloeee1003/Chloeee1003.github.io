@@ -108,9 +108,11 @@ body {
 }
 
 .info p {
-  margin: 5px 0;
+  margin: 4px 0;
   color: #555;
+  font-size: 0.95rem;
 }
+
 
 .info a {
   color: #333;
