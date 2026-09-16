@@ -256,3 +256,28 @@ footer {
     height: 60vw;
   }
 }
+/* ===== 最强制：卡片区域所有文字全部黑色 ===== */
+.cards,
+.cards *,
+.card,
+.card *,
+a.card,
+a.card *,
+.cards h1, .cards h2, .cards h3,
+.cards h1 *, .cards h2 *, .cards h3 *,
+.card h1, .card h2, .card h3,
+.card h1 *, .card h2 *, .card h3 * {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+/* 卡片正文保持灰色，不要全黑 */
+.card p,
+.card p *,
+a.card p,
+a.card p *,
+.cards p,
+.cards p * {
+  color: #666 !important;
+  font-weight: normal !important;
+}
