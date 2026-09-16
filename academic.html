@@ -63,6 +63,20 @@
       }
     }
   </style>
+  body {
+  background-image: url('academic-bg.jpg');   /* 把文件名换成你上传的图片名 */
+  background-size: cover;                     /* 铺满全屏 */
+  background-position: center;                /* 居中显示 */
+  background-attachment: fixed;               /* 滚动时背景固定 */
+  background-repeat: no-repeat;
+}
+  body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);       /* 白色半透明遮罩，数值可调 */
+  z-index: -1;
+}
 </head>
 <body>
 
