@@ -5,6 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>策划案 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 本页背景图（可选，改文件名即可） */
+    body {
+      background-image: url('academic-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.55);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #000;
+      margin: 60px 0 10px;
+    }
+    .page-subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 60px;
+    }
+
+    /* 每个策划案块 */
+    .plan-block {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 0 25px;
+      text-align: center;
+    }
+
+    .plan-block h2 {
+      font-size: 1.3rem;
+      color: #000 !important;
+      font-weight: bold !important;
+      margin-bottom: 20px;
+    }
+
+    /* PDF 预览框 */
+    .plan-block iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      background: #fff;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    /* 下载按钮 */
+    .plan-block .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #333;
+      color: #fff !important;
+      text-decoration: none !important;
+      border-radius: 6px;
+      font-weight: normal !important;
+    }
+    .plan-block .btn:hover {
+      background: #000;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,10 +89,28 @@
       </nav>
     </header>
 
-    <h1 style="text-align: center; margin: 50px 0 30px; color: #000; font-size: 2rem;">策划案</h1>
+    <h1 class="page-title">策划案</h1>
+    <p class="page-subtitle">我的三个策划案作品</p>
 
-    <div style="max-width: 1000px; margin: 0 auto 80px; padding: 0 25px; text-align: center;">
-      <img src="plan1.jpg" alt="策划案" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); margin-bottom: 30px;">
+    <!-- 策划案一 -->
+    <div class="plan-block">
+      <h2>策划案一：项目名称</h2>
+      <iframe src="plan1.pdf"></iframe>
+      <a href="plan1.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
+    </div>
+
+    <!-- 策划案二 -->
+    <div class="plan-block">
+      <h2>策划案二：项目名称</h2>
+      <iframe src="plan2.pdf"></iframe>
+      <a href="plan2.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
+    </div>
+
+    <!-- 策划案三 -->
+    <div class="plan-block">
+      <h2>策划案三：项目名称</h2>
+      <iframe src="plan3.pdf"></iframe>
+      <a href="plan3.pdf" target="_blank" class="btn">查看 / 下载 PDF</a>
     </div>
 
   </div>
