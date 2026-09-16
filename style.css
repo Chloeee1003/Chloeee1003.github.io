@@ -392,3 +392,173 @@ a.card p *,
     width: 100%;
   }
 }
+/* ===== 个人经历仪表盘布局 ===== */
+.dash-header {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin: 50px 20px 40px;
+}
+
+/* 三列网格布局 */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr; /* 中间略宽，突出人物 */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 30px;
+  align-items: center;
+}
+
+/* 左右两列的容器，垂直排列卡片 */
+.dash-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 卡片样式：柔和的磨砂玻璃效果 */
+.dash-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 卡片顶部的小标签 */
+.card-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold !important;
+  color: #555 !important;
+  background: #f7f7f7;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.card-tag .en {
+  font-size: 0.6rem;
+  color: #aaa;
+  font-weight: normal;
+  margin-left: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* 卡片标题 */
+.dash-card h3 {
+  font-size: 1.15rem;
+  color: #222 !important;
+  font-weight: bold !important;
+  margin-bottom: 15px;
+}
+
+/* 卡片列表 */
+.dash-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dash-card li {
+  font-size: 0.85rem;
+  color: #666 !important;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 14px;
+}
+
+/* 列表前面的小圆点 */
+.dash-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ccc;
+  font-weight: bold;
+}
+
+/* 卡片底部的小结语 */
+.card-footer {
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: #999 !important;
+  background: #fcfcfc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #f0f0f0;
+}
+
+/* 中间人物区域 */
+.dash-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.avatar-wrap {
+  width: 100%;
+  max-width: 260px;
+  position: relative;
+}
+
+/* 人物下方的椭圆形底座（可选，为了像图片一样有踩在台上的感觉） */
+.avatar-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+.q-avatar {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
+}
+
+/* 人物脚下的标签 */
+.avatar-label {
+  margin-top: 25px;
+  background: #fff;
+  padding: 8px 25px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: bold !important;
+  color: #000 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* ===== 手机端适配 ===== */
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* 手机端变成上下单栏 */
+    gap: 40px;
+  }
+
+  /* 手机上人物放在最前面 */
+  .dash-center {
+    order: -1;
+  }
+
+  .avatar-wrap {
+    max-width: 200px;
+  }
+}
