@@ -23,7 +23,6 @@
       pointer-events: none;
     }
 
-    /* ===== 页面标题 ===== */
     .page-title {
       text-align: center;
       font-size: 2rem;
@@ -64,7 +63,7 @@
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     }
 
-    /* ===== 8 张图片网格 ===== */
+    /* ===== 图片网格 ===== */
     .gallery-title {
       text-align: center;
       font-size: 1.3rem;
@@ -96,18 +95,28 @@
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
 
-    /* ===== 关键：图片统一尺寸，按比例裁剪，不变形 ===== */
+    /* ===== 竖图：统一高度，裁剪填满 ===== */
     .design-item img {
       width: 100%;
-      height: 260px;              /* 统一高度，可根据需要改数字 */
-      object-fit: cover;          /* 按比例裁剪填满，不拉伸变形 */
-      object-position: center;    /* 从中间裁剪 */
+      height: 260px;
+      object-fit: cover;
+      object-position: center;
       border-radius: 10px;
       display: block;
       transition: transform 0.3s;
     }
     .design-item:hover img {
-      transform: scale(1.04);     /* 鼠标悬停时轻微放大，效果更好 */
+      transform: scale(1.04);
+    }
+
+    /* ===== 横图：占一整行，完整显示，不裁剪 ===== */
+    .design-item.wide {
+      grid-column: 1 / -1;
+    }
+    .design-item.wide img {
+      height: auto;
+      object-fit: contain;
+      max-height: 600px;
     }
 
     /* ===== 手机适配 ===== */
@@ -116,7 +125,8 @@
       .pdf-section { padding: 20px; }
       .design-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 25px; }
       .design-item { padding: 12px; }
-      .design-item img { height: 220px; }   /* 手机上高度稍微矮一点 */
+      .design-item img { height: 220px; }
+      .design-item.wide img { height: auto; max-height: 400px; }
     }
   </style>
 </head>
@@ -142,17 +152,22 @@
       <a href="design.pdf" target="_blank" style="display:inline-block !important; padding:12px 30px !important; background:#333 !important; color:#fff !important; text-decoration:none !important; border-radius:8px !important; font-weight:normal !important; font-size:1rem !important;">📄 点击查看 / 下载 PDF</a>
     </div>
 
-    <!-- ===== 8 张图片 ===== -->
+    <!-- ===== 图片展示 ===== -->
     <h2 class="gallery-title">作品展示</h2>
     <div class="design-grid">
+
       <div class="design-item"><img src="design1.JPG" alt="平面设计作品一"></div>
       <div class="design-item"><img src="design2.JPG" alt="平面设计作品二"></div>
       <div class="design-item"><img src="design3.JPG" alt="平面设计作品三"></div>
       <div class="design-item"><img src="design4.JPG" alt="平面设计作品四"></div>
-      <div class="design-item"><img src="design5.JPG" alt="平面设计作品五"></div>
+
+      <!-- ⚠️ 第 5 张是横图，加 wide，占满一整行 -->
+      <div class="design-item wide"><img src="design5.JPG" alt="平面设计横图"></div>
+
       <div class="design-item"><img src="design6.JPG" alt="平面设计作品六"></div>
       <div class="design-item"><img src="design7.JPG" alt="平面设计作品七"></div>
       <div class="design-item"><img src="design8.JPG" alt="平面设计作品八"></div>
+
     </div>
 
   </div>
