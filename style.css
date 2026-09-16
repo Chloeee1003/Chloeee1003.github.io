@@ -189,31 +189,49 @@ footer {
     width: 60vw;
   }
 }
-/* 卡片作为链接时的样式 */
-a.card {
+/* 所有链接：黑色加粗，不要下划线 */
+a {
+  color: #000;
+  font-weight: bold;
   text-decoration: none;
-  color: inherit;
-  display: block;
 }
 
-/* 按钮样式（用于简历下载） */
-.btn {
-  display: inline-block;
-  padding: 10px 24px;
-  background: #333;
-  color: #fff;
+a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* 导航栏链接保持正常粗细 */
+.navbar nav a {
+  font-weight: normal;
+  color: #333;
+}
+
+.navbar nav a:hover {
+  color: #000;
+  border-bottom: 2px solid #000;
   text-decoration: none;
-  border-radius: 6px;
-  margin-top: 15px;
-  transition: background 0.2s;
+}
+
+/* 卡片标题加粗 */
+.card h2 {
+  font-weight: bold;
+  color: #000;
+}
+
+/* 基本信息里的文字 */
+.info p {
+  font-weight: normal;
+  color: #333;
+}
+
+/* 按钮保持白字 */
+.btn {
+  color: #fff !important;
+  font-weight: normal;
 }
 
 .btn:hover {
-  background: #000;
-}
-
-/* 内页的 info 区域宽一点 */
-.info {
-  max-width: 900px;
-  margin: 60px auto;
+  color: #fff !important;
+  text-decoration: none;
 }
