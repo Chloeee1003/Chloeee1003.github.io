@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,26 @@
   <title>学术作品 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* 背景图 */
+    body {
+      background-image: url('academic-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* 白色半透明遮罩，让卡片文字更清晰 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 页面标题 */
     .academic-title {
       text-align: center;
       font-size: 2rem;
@@ -17,6 +37,8 @@
       color: #888;
       margin-bottom: 60px;
     }
+
+    /* 左右两列布局 */
     .academic-layout {
       display: flex;
       gap: 40px;
@@ -24,6 +46,8 @@
       margin: 0 auto 100px;
       padding: 0 25px;
     }
+
+    /* 卡片样式 */
     .entry-card {
       flex: 1;
       display: block;
@@ -57,24 +81,12 @@
       color: #666 !important;
       line-height: 1.6;
     }
+
+    /* 手机端适配 */
     @media (max-width: 768px) {
       .academic-layout {
         flex-direction: column;
       }
-      body {
-  background-image: url('academic-bg.jpg');   /* 把文件名换成你上传的图片名 */
-  background-size: cover;                     /* 铺满全屏 */
-  background-position: center;                /* 居中显示 */
-  background-attachment: fixed;               /* 滚动时背景固定 */
-  background-repeat: no-repeat;
-}
-  body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.4);       /* 白色半透明遮罩，数值可调 */
-  z-index: -1;
-}
     }
   </style>
 </head>
