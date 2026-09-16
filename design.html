@@ -63,7 +63,7 @@
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     }
 
-    /* ===== 图片展示区：两列网格 ===== */
+    /* ===== 图片展示区 ===== */
     .gallery-title {
       text-align: center;
       font-size: 1.3rem;
@@ -74,7 +74,7 @@
     }
     .design-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);   /* 固定两列 */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
       max-width: 1100px;
       margin: 0 auto 100px;
@@ -87,27 +87,35 @@
       padding: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+    .design-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
 
-    /* ===== 关键：图片全部按原比例完整显示，不裁剪、不拉伸 ===== */
+    /* ===== 统一尺寸：所有图片同样高度，按比例裁剪填满，不变形 ===== */
     .design-item img {
       width: 100%;
-      height: auto;          /* 高度自动，按原图比例 */
+      height: 260px;
+      object-fit: cover;
+      object-position: center;
       border-radius: 10px;
       display: block;
+      transition: transform 0.3s;
+    }
+    .design-item:hover img {
+      transform: scale(1.04);
     }
 
-    /* ===== 横图：单独占一整行 ===== */
-    .design-item.wide {
-      grid-column: 1 / -1;   /* 横跨两列 */
-    }
-
-    /* ===== 手机适配：变成单列 ===== */
+    /* ===== 手机适配 ===== */
     @media (max-width: 768px) {
       .pdf-viewer { height: 420px; }
       .pdf-section { padding: 20px; }
       .design-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 25px; }
       .design-item { padding: 12px; }
+      .design-item img { height: 220px; }
     }
   </style>
 </head>
@@ -137,17 +145,17 @@
     <h2 class="gallery-title">作品展示</h2>
     <div class="design-grid">
 
+      <!-- 前面 7 张竖图 -->
       <div class="design-item"><img src="design1.JPG" alt="平面设计作品一"></div>
       <div class="design-item"><img src="design2.JPG" alt="平面设计作品二"></div>
       <div class="design-item"><img src="design3.JPG" alt="平面设计作品三"></div>
       <div class="design-item"><img src="design4.JPG" alt="平面设计作品四"></div>
-
-      <!-- 第 5 张是横图，加 wide，占满一整行 -->
-      <div class="design-item wide"><img src="design5.JPG" alt="平面设计横图"></div>
-
       <div class="design-item"><img src="design6.JPG" alt="平面设计作品六"></div>
       <div class="design-item"><img src="design7.JPG" alt="平面设计作品七"></div>
       <div class="design-item"><img src="design8.JPG" alt="平面设计作品八"></div>
+
+      <!-- 横图放最后 -->
+      <div class="design-item"><img src="design5.JPG" alt="平面设计横图"></div>
 
     </div>
 
