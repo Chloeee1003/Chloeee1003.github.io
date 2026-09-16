@@ -281,3 +281,113 @@ a.card p *,
   color: #666 !important;
   font-weight: normal !important;
 }
+/* ===== 经历页面：中心辐射布局 ===== */
+.exp-header {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  margin-top: 40px;
+}
+
+/* 主容器：3列布局 */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 40px;
+  align-items: center;
+}
+
+/* 左右两侧的卡片 */
+.exp-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s;
+}
+
+.exp-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 卡片上的小标签（我的能力/我的身份） */
+.exp-tag {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-weight: normal !important;
+}
+
+/* 卡片标题：黑色加粗 */
+.exp-card h3 {
+  font-size: 1.15rem;
+  color: #000 !important;
+  margin-bottom: 10px;
+  font-weight: bold !important;
+}
+
+/* 卡片正文：灰色 */
+.exp-card p {
+  color: #555 !important;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 中间 Q版 人物区 */
+.exp-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.q-avatar {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+.avatar-label {
+  position: absolute;
+  bottom: -15px;
+  background: #fff;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: bold !important;
+  color: #000 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 手机端适配：变成单列 */
+@media (max-width: 768px) {
+  .exp-layout {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    gap: 20px;
+  }
+  
+  /* 让Q版人物在手机上排在第一个 */
+  .exp-center {
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .q-avatar {
+    max-width: 200px;
+  }
+}
