@@ -5,11 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>教育背景 | 林奕辰</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== 背景图（不需要就删掉 body 和 body::before） ===== */
+    body {
+      background-image: url('academic-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.55);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ===== 页面标题 ===== */
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #000;
+      margin: 60px 0 10px;
+    }
+    .page-subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 60px;
+    }
+
+    /* ===== 简历卡片 ===== */
+    .resume-card {
+      max-width: 900px;
+      margin: 0 auto 100px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: center;
+    }
+    .resume-card h2 {
+      font-size: 1.3rem;
+      color: #000 !important;
+      font-weight: bold !important;
+      margin-bottom: 20px;
+    }
+
+    /* ===== PDF 预览框 ===== */
+    .pdf-viewer {
+      width: 100%;
+      height: 800px;
+      border: none;
+      border-radius: 10px;
+      background: #fafafa;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    }
+
+    /* ===== 手机适配 ===== */
+    @media (max-width: 768px) {
+      .pdf-viewer { height: 500px; }
+      .resume-card { padding: 20px; }
+    }
+  </style>
 </head>
 <body>
 
   <div class="page-content">
 
+    <!-- 顶部导航栏 -->
     <header class="navbar">
       <div class="logo">林奕辰</div>
       <nav>
@@ -17,20 +85,17 @@
       </nav>
     </header>
 
-    <section class="info">
-      <h1>教育背景</h1>
-      <p>你好！这是我的简历。</p>
-      <p>
-        <a href="resume.pdf" target="_blank" class="btn">查看 / 下载我的简历 (PDF)</a>
-      </p>
-    </section>
+    <!-- 标题 -->
+    <h1 class="page-title">教育背景</h1>
+    <p class="page-subtitle">你好！这是我的教育经历简历。</p>
 
-    <!-- 如果想把 PDF 直接嵌在页面里，把下面这行的注释去掉 -->
-    <!--
-    <section class="cards">
-      <iframe src="resume.pdf" width="100%" height="800px" style="border:none; border-radius:10px;"></iframe>
-    </section>
-    -->
+    <!-- ===== 简历预览 ===== -->
+    <div class="resume-card">
+      <h2>我的简历（PDF）</h2>
+      <!-- ⚠️ 把 src 和 href 里的文件名换成你实际上传的简历文件名 -->
+      <iframe class="pdf-viewer" src="resume.pdf"></iframe>
+      <a href="resume.pdf" target="_blank" style="display:inline-block !important; padding:12px 30px !important; background:#333 !important; color:#fff !important; text-decoration:none !important; border-radius:8px !important; font-weight:normal !important; font-size:1rem !important;">📄 点击查看 / 下载简历</a>
+    </div>
 
   </div>
 
