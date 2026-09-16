@@ -89,16 +89,25 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.6);
       transition: transform 0.3s;
+      overflow: hidden;
     }
     .design-item:hover {
       transform: translateY(-6px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
+
+    /* ===== 关键：图片统一尺寸，按比例裁剪，不变形 ===== */
     .design-item img {
       width: 100%;
-      height: auto;
+      height: 260px;              /* 统一高度，可根据需要改数字 */
+      object-fit: cover;          /* 按比例裁剪填满，不拉伸变形 */
+      object-position: center;    /* 从中间裁剪 */
       border-radius: 10px;
       display: block;
+      transition: transform 0.3s;
+    }
+    .design-item:hover img {
+      transform: scale(1.04);     /* 鼠标悬停时轻微放大，效果更好 */
     }
 
     /* ===== 手机适配 ===== */
@@ -107,6 +116,7 @@
       .pdf-section { padding: 20px; }
       .design-grid { grid-template-columns: 1fr; padding: 0 20px; gap: 25px; }
       .design-item { padding: 12px; }
+      .design-item img { height: 220px; }   /* 手机上高度稍微矮一点 */
     }
   </style>
 </head>
@@ -114,7 +124,6 @@
 
   <div class="page-content">
 
-    <!-- 顶部导航栏 -->
     <header class="navbar">
       <div class="logo">林奕辰</div>
       <nav>
@@ -123,7 +132,6 @@
       </nav>
     </header>
 
-    <!-- 标题 -->
     <h1 class="page-title">平面设计</h1>
     <p class="page-subtitle">我的视觉设计作品集</p>
 
